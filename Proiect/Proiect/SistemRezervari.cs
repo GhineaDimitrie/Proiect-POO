@@ -18,7 +18,7 @@ public class SistemRezervari
         logger.Log($"Sistem de rezervări inițializat cu {numarBirouri} birouri și {numarParcare} parcări.");
 
     }
-    
+   
     public void AfiseazaHarta()
     {
         logger.Log("Afișare hartă locuri");
@@ -33,6 +33,8 @@ public class SistemRezervari
     
     public void AfisareLocuri(string tip)
     {
+        logger.Log($"Afișare locuri de tip {tip}");
+
         Console.WriteLine($"Locuri disponibile pentru {tip}:");
         foreach (var loc in locuri)
         {
@@ -42,21 +44,41 @@ public class SistemRezervari
             }
         }
     }
+   
 
-    public void RezervaLoc(string numeUtilizator, int numarLoc, string tip)
+    public void EditeazaLoc(int numarLoc, bool esteRezervat)
+    {
+        var loc = locuri.Find(l => l.Numar == numarLoc);
+        if (loc != null)
+        {
+            loc.EsteRezervat = esteRezervat;
+            logger.Log($"Loc {numarLoc} editat: rezervat = {esteRezervat}.");
+            Console.WriteLine("Loc editat cu succes.");
+        }
+        else
+        {
+            logger.Log($"Încercare de editare eșuată: loc {numarLoc} inexistent.");
+            Console.WriteLine("Loc inexistent.");
+        }
+    }
+    
+    
+    
+
+    public void RezervaLoc(string numeUtilizator, int numarLoc, string tip, decimal cost)
     {
         var loc = locuri.Find(l => l.Numar == numarLoc && l.Tip == tip);
-
         if (loc == null || loc.EsteRezervat)
         {
-            Console.WriteLine("Loc invalid sau deja rezervat");
+            logger.Log($"Rezervare eșuată pentru loc {numarLoc} de tip {tip}.");
+            Console.WriteLine("Loc invalid sau deja rezervat.");
             return;
         }
-        
+
         loc.EsteRezervat = true;
-        rezervari.Add(new Rezervare(numeUtilizator,numarLoc,tip));
-        Console.WriteLine($"Loc {numarLoc} ({tip}) rezervat cu succes de {numeUtilizator}!");
-    
+        rezervari.Add(new Rezervare(numeUtilizator, numarLoc, tip, cost));
+        logger.Log($"Loc {numarLoc} de tip {tip} rezervat de {numeUtilizator} pentru suma de {cost}.");
+        Console.WriteLine("Rezervare realizată cu succes!");
     }
 
     public void VizualizeazaRezervari(string numeUtilizator)
@@ -70,6 +92,7 @@ public class SistemRezervari
             }
         }
     }
+    
     
     
     
