@@ -4,15 +4,32 @@ public class SistemRezervari
 {
     private List<Loc> locuri = new List<Loc>();
     private List<Rezervare> rezervari = new List<Rezervare>();
+    private readonly ILogger logger;
 
-    public SistemRezervari(int numarBirouri, int numarParcare)
+    
+
+    public SistemRezervari(int numarBirouri, int numarParcare,ILogger logger)
     {
+        this.logger = logger;
         for (int i = 0; i < numarBirouri; i++)
             locuri.Add(new Loc(i,"Birou"));
         for (int i = 0; i < numarBirouri; i++)
             locuri.Add(new Loc(i,"Parcare"));
+        logger.Log($"Sistem de rezervări inițializat cu {numarBirouri} birouri și {numarParcare} parcări.");
 
     }
+    
+    public void AfiseazaHarta()
+    {
+        logger.Log("Afișare hartă locuri");
+        Console.WriteLine("Harta locurilor (R - Rezervat, L - Liber):");
+        foreach (var loc in locuri)
+        {
+            Console.Write(loc.EsteRezervat ? "R " : "L ");
+        }
+        Console.WriteLine();
+    }
+
     
     public void AfisareLocuri(string tip)
     {
