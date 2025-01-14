@@ -10,6 +10,46 @@ class Program
         Console.Write("Tip utilizator (Normal/Manager/Admin): ");
         string tipUtilizator = Console.ReadLine();
         
+        bool ruleaza = true;
+
+        while (ruleaza)
+        {
+            Console.WriteLine("\nMeniu:");
+            if (tipUtilizator.ToLower() == "normal")
+            {
+                Console.WriteLine("1. Vizualizează locuri birou");
+                Console.WriteLine("2. Vizualizează locuri parcare");
+                Console.WriteLine("3. Rezervă loc");
+                Console.WriteLine("4. Vizualizează rezervările tale");
+                Console.WriteLine("5. Șterge o rezervare");
+                Console.WriteLine("6. Ieșire");
+            }
+            else if (tipUtilizator.ToLower() == "manager")
+            {
+                Console.WriteLine("1. Vizualizează locuri birou");
+                Console.WriteLine("2. Vizualizează locuri parcare");
+                Console.WriteLine("3. Rezervă loc");
+                Console.WriteLine("4. Vizualizează rezervările tale");
+                Console.WriteLine("5. Șterge o rezervare");
+                Console.WriteLine("6. Modifică rezervări ale echipei");
+                Console.WriteLine("7. Ieșire");
+            }
+            else if (tipUtilizator.ToLower() == "admin")
+            {
+                Console.WriteLine("1. Vizualizează locuri birou");
+                Console.WriteLine("2. Vizualizează locuri parcare");
+                Console.WriteLine("3. Rezervă loc");
+                Console.WriteLine("4. Vizualizează rezervările tale");
+                Console.WriteLine("5. Șterge o rezervare");
+                Console.WriteLine("6. Editează locuri");
+                Console.WriteLine("7. Afișează harta locurilor");
+                Console.WriteLine("8. Ieșire");
+            }
+            else
+            {
+                Console.WriteLine("Tip utilizator necunoscut. Ieșire...");
+                break;
+            }
         
         
         
