@@ -113,5 +113,26 @@ public class SistemRezervari
         }
     } 
     
+    public void IdentificaTipUtilizator(string tipUtilizator, string numeUtilizator)
+    {
+        logger.Log($"Identificare utilizator {numeUtilizator} de tip {tipUtilizator}");
+
+        switch (tipUtilizator.ToLower())
+        {
+            case "normal":
+                Console.WriteLine($"Utilizator {numeUtilizator} poate: \n - Face rezervări \n - Vizualiza rezervările \n - Șterge rezervările proprii");
+                break;
+            case "manager":
+                Console.WriteLine($"Utilizator {numeUtilizator} poate: \n - Face rezervări \n - Vizualiza rezervările \n - Modifica rezervările echipei");
+                break;
+            case "admin":
+                Console.WriteLine($"Utilizator {numeUtilizator} poate: \n - Face rezervări \n - Vizualiza rezervările \n - Modifica orice rezervare \n - Edita locurile");
+                break;
+            default:
+                logger.Log($"Tip utilizator necunoscut: {tipUtilizator}");
+                Console.WriteLine("Tip de utilizator necunoscut.");
+                break;
+        }
+    }
     
 }
