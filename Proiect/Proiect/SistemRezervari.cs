@@ -31,7 +31,7 @@ public class SistemRezervari
     }
 
     
-    public void AfisareLocuri(string tip)
+    public void AfiseazaLocuri(string tip)
     {
         logger.Log($"Afișare locuri de tip {tip}");
 
@@ -44,7 +44,7 @@ public class SistemRezervari
             }
         }
     }
-   
+  
 
     public void EditeazaLoc(int numarLoc, bool esteRezervat)
     {
@@ -61,7 +61,6 @@ public class SistemRezervari
             Console.WriteLine("Loc inexistent.");
         }
     }
-    
     
     
 
