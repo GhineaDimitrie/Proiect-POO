@@ -4,13 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Loc loc1 = new Loc(1);
-        Console.WriteLine($"Loc {loc1.Numar}: {(loc1.EsteRezervat ? "Rezervat" : "Liber")}");
+        SistemRezervari sistem = new SistemRezervari(3, 2);
+        sistem.AfisareLocuri("Birou");
+        sistem.AfisareLocuri("Parcare");
         
-        Rezervare rezervare1=new Rezervare("Ion Popescu", loc1.Numar,false);
-        Console.WriteLine($"Rezervare facuta de {rezervare1.NumeUtilizator} pentru loc {rezervare1.NumarLoc} (Birou)");
+        sistem.RezervaLoc("IonPopescu",1,"Birou");
+        sistem.AfisareLocuri("Birou");
+        sistem.VizualizeazaRezervari("IonPopescu");
         
-        loc1.EsteRezervat = true;
-        Console.WriteLine($"Loc {loc1.Numar}: {(loc1.EsteRezervat ? "Rezervat" : "Liber")}");
     }
 }

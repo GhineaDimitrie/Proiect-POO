@@ -4,12 +4,11 @@ public class Rezervare
 {
     public string NumeUtilizator { get; set; }
     public int NumarLoc { get; set; }
-    public bool EsteParcare { get; set; }
-
-    public Rezervare(string numeUtilizator, int numarLoc, bool esteParcare)
+    public String TipLoc { get; set; }
+    public Rezervare(string numeUtilizator, int numarLoc, string tipLoc)
     {
         NumeUtilizator = numeUtilizator;
         NumarLoc = numarLoc;
-        EsteParcare = esteParcare;
+        TipLoc = tipLoc;
     }
 }
