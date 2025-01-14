@@ -92,7 +92,26 @@ public class SistemRezervari
         }
     }
     
-    
+    public void StergeRezervare(string numeUtilizator, int numarLoc)
+    {
+        var rezervare = rezervari.Find(r => r.NumeUtilizator == numeUtilizator && r.NumarLoc == numarLoc);
+        if (rezervare != null)
+        {
+            rezervari.Remove(rezervare);
+            var loc = locuri.Find(l => l.Numar == numarLoc);
+            if (loc != null)
+            {
+                loc.EsteRezervat = false;
+            }
+            logger.Log($"Rezervarea pentru locul {numarLoc} a fost ștearsă de către {numeUtilizator}.");
+            Console.WriteLine("Rezervare ștearsă cu succes.");
+        }
+        else
+        {
+            logger.Log($"Rezervarea pentru locul {numarLoc} nu a fost găsită pentru utilizatorul {numeUtilizator}.");
+            Console.WriteLine("Rezervare inexistentă.");
+        }
+    } 
     
     
 }
